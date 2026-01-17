@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ## First Practice Markdown
 
 Display image below:
-![](../docs/assets/practice_smile.jpg){width=50%}
+![](assets/practice_smile.jpg){width=50%}
 
 
 And comment section below:
