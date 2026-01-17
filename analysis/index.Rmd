@@ -100,16 +100,22 @@ Whether the content is correct follows a binomial distribution with $p < 1$, so 
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(htmltools)
-default_img <- "assets/practice_smile.png" 
+default_img <- "assets/practice_smile.jpg" 
 
 # --- DEFINE POSTS LIST HERE ---
 posts <- list(
   list(
     title = "Practice",
     file = "Practice.html",
-    img = "assets/practice_smile.jpg", 
     desc = "First RMD file to test",
     tags = c("Random")
+  ),
+  list(
+    title = "Second Practice",
+    file = "practice2.html",
+    img = "",
+    desc = "Second RMD file to test",
+    tags = c("Random","Smiley")
   )
 )
 
