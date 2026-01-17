@@ -1,5 +1,5 @@
 ---
-title: "About"
+title: "About Me"
 output:
   workflowr::wflow_html:
     toc: false
@@ -7,4 +7,4 @@ editor_options:
   chunk_output_type: console
 ---
 
-Describe your project.
+My name is Jihee You, and I am a second-year data science PhD student at UChicago. My research area is biostatistics. Currently, I am working with empirical Bayes and matrix factorization.
