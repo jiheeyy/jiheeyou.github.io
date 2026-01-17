@@ -12,6 +12,6 @@ knitr::opts_chunk$set(echo = TRUE)
 ## First Practice Markdown
 
 Display image below:
-![unchanged image](../data/practice_smile.jpg)
+![unchanged image](assets/practice_smile.jpg)
 
 And comment section below:
