@@ -441,15 +441,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomjiheeyyeasyhardtree0730a2737da331ffe08061cf795a4f6029829289targetblank0730a27a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomjiheeyyeasyhardtree666917c10114fec867d0c6d2572404b6f36d6709targetblank666917ca">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/jiheeyy/easyhard/tree/0730a2737da331ffe08061cf795a4f6029829289" target="_blank">0730a27</a>
+<a href="https://github.com/jiheeyy/easyhard/tree/666917c10114fec867d0c6d2572404b6f36d6709" target="_blank">666917c</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomjiheeyyeasyhardtree0730a2737da331ffe08061cf795a4f6029829289targetblank0730a27a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomjiheeyyeasyhardtree666917c10114fec867d0c6d2572404b6f36d6709targetblank666917ca"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -459,7 +459,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/jiheeyy/easyhard/tree/0730a2737da331ffe08061cf795a4f6029829289" target="_blank">0730a27</a>.
+<a href="https://github.com/jiheeyy/easyhard/tree/666917c10114fec867d0c6d2572404b6f36d6709" target="_blank">666917c</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -478,10 +478,7 @@ Ignored files:
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
     Ignored:    analysis/.DS_Store
-
-Unstaged changes:
-    Modified:   analysis/Practice.Rmd
-    Deleted:    analysis/assets/practice_smile.jpg
+    Ignored:    analysis/after_body.html
 
 </code></pre>
 <p>
@@ -525,6 +522,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/jiheeyy/easyhard/blob/666917c10114fec867d0c6d2572404b6f36d6709/analysis/index.Rmd" target="_blank">666917c</a>
+</td>
+<td>
+jiheeyy
+</td>
+<td>
+2026-01-17
+</td>
+<td>
+wflow_publish(c("analysis/index.Rmd", "analysis/Practice.Rmd"))
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/jiheeyy/easyhard/a5f34754bba450b32b6f9a02806aafad12916e92/docs/index.html" target="_blank">a5f3475</a>
+</td>
+<td>
+jiheeyy
+</td>
+<td>
+2026-01-17
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -800,6 +831,28 @@ loaded via a namespace (and not attached):
 </div>
 </div>
 
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var path = window.location.pathname;
+    // Add the filenames you want to EXCLUDE here
+    var excluded = ['index.html', 'about.html', 'license.html'];
+
+    var isExcluded = excluded.some(function(file) {
+      return path.endsWith(file) || path === '/';
+    });
+
+    if (!isExcluded) {
+      var script = document.createElement('script');
+      script.src = "https://utteranc.es/client.js";
+      script.setAttribute("repo", "jiheeyy/easyhard");
+      script.setAttribute("issue-term", "pathname");
+      script.setAttribute("theme", "github-light");
+      script.setAttribute("crossorigin", "anonymous");
+      script.async = true;
+      document.body.appendChild(script);
+    }
+  });
+</script>
 
 <!-- Adjust MathJax settings so that all math formulae are shown using
 TeX fonts only; see
