@@ -12,14 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ## First Practice Markdown
 
 Display image below:
-```{r}
-knitr::include_graphics("assets/practice_smile.jpg", error=FALSE)
-```
-
-Second attempt:
-![](assets/practice_smile.jpg)
-Third attempt:
-[![Smile](practice_smile.jpg)](https://github.com/jiheeyy/easyhard/blob/master/analysis/assets/practice_smile.jpg)
+![](../docs/assets/practice_smile.jpg){width=50%}
 
 
 And comment section below:

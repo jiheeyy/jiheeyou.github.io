@@ -11,7 +11,7 @@
 
 <meta name="author" content="Jihee You" />
 
-<meta name="date" content="2026-01-16" />
+<meta name="date" content="2026-01-17" />
 
 <title>Practice</title>
 
@@ -361,7 +361,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Practice</h1>
 <h4 class="author">Jihee You</h4>
-<h4 class="date">2026-01-16</h4>
+<h4 class="date">2026-01-17</h4>
 
 </div>
 
@@ -369,7 +369,7 @@ div.tocify {
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-ok text-success"
+workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -380,8 +380,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-</a>
+class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -390,13 +390,13 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2026-01-16
+<strong>Last updated:</strong> 2026-01-17
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 0
+aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>easyhard/</code> <span
@@ -419,18 +419,21 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
-<span class="glyphicon glyphicon-ok text-success"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
-</a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
+changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate"
+<div id="strongRMarkdownfilestronguncommittedchanges"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git
-repository, you know the exact version of the code that produced these
-results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of
+the R Markdown file created these results, you’ll want to first commit
+it to the Git repo. If you’re still working on the analysis, you can
+ignore this warning. When you’re finished, you can run
+<code>wflow_publish</code> to commit the R Markdown file and build the
+HTML.</p>
 </div>
 </div>
 </div>
@@ -521,15 +524,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomjiheeyyeasyhardtreefe648c7847e17df0bce8b9dfae9ad252d1436358targetblankfe648c7a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomjiheeyyeasyhardtree880dff7eb66b8f9755e410d2d7b8f36dfdfddbd3targetblank880dff7a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/jiheeyy/easyhard/tree/fe648c7847e17df0bce8b9dfae9ad252d1436358" target="_blank">fe648c7</a>
+<a href="https://github.com/jiheeyy/easyhard/tree/880dff7eb66b8f9755e410d2d7b8f36dfdfddbd3" target="_blank">880dff7</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomjiheeyyeasyhardtreefe648c7847e17df0bce8b9dfae9ad252d1436358targetblankfe648c7a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomjiheeyyeasyhardtree880dff7eb66b8f9755e410d2d7b8f36dfdfddbd3targetblank880dff7a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -539,7 +542,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/jiheeyy/easyhard/tree/fe648c7847e17df0bce8b9dfae9ad252d1436358" target="_blank">fe648c7</a>.
+<a href="https://github.com/jiheeyy/easyhard/tree/880dff7eb66b8f9755e410d2d7b8f36dfdfddbd3" target="_blank">880dff7</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -558,6 +561,12 @@ Ignored files:
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
     Ignored:    analysis/.DS_Store
+    Ignored:    analysis/after_body.html
+
+Unstaged changes:
+    Modified:   analysis/Practice.Rmd
+    Modified:   analysis/_site.yml
+    Deleted:    analysis/assets/practice_smile.jpg
 
 </code></pre>
 <p>
@@ -602,6 +611,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/jiheeyy/easyhard/cf8f36371e290146d2bafcef8f379e829181d64f/docs/Practice.html" target="_blank">cf8f363</a>
+</td>
+<td>
+jiheeyy
+</td>
+<td>
+2026-01-16
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -696,13 +722,8 @@ wflow_publish("analysis/Practice.Rmd")
 </div>
 <div id="first-practice-markdown" class="section level2">
 <h2>First Practice Markdown</h2>
-<p>Display image below:</p>
-<pre class="r"><code>knitr::include_graphics(&quot;assets/practice_smile.jpg&quot;, error=FALSE)</code></pre>
-<p><img src="assets/practice_smile.jpg" style="display: block; margin: auto;" /></p>
-<p>Second attempt: <img src="assets/practice_smile.jpg" /> Third
-attempt: <a
-href="https://github.com/jiheeyy/easyhard/blob/master/analysis/assets/practice_smile.jpg"><img
-src="practice_smile.jpg" alt="Smile" /></a></p>
+<p>Display image below: <img src="../docs/assets/practice_smile.jpg"
+style="width:50.0%" /></p>
 <p>And comment section below:</p>
 <br>
 <p>
@@ -753,6 +774,28 @@ loaded via a namespace (and not attached):
 </div>
 </div>
 
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var path = window.location.pathname;
+    // Add the filenames you want to EXCLUDE here
+    var excluded = ['index.html', 'about.html', 'license.html'];
+
+    var isExcluded = excluded.some(function(file) {
+      return path.endsWith(file) || path === '/';
+    });
+
+    if (!isExcluded) {
+      var script = document.createElement('script');
+      script.src = "https://utteranc.es/client.js";
+      script.setAttribute("repo", "jiheeyy/easyhard");
+      script.setAttribute("issue-term", "pathname");
+      script.setAttribute("theme", "github-light");
+      script.setAttribute("crossorigin", "anonymous");
+      script.async = true;
+      document.body.appendChild(script);
+    }
+  });
+</script>
 
 <!-- Adjust MathJax settings so that all math formulae are shown using
 TeX fonts only; see
