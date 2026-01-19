@@ -105,17 +105,11 @@ default_img <- "assets/practice_smile.jpg"
 # --- DEFINE POSTS LIST HERE ---
 posts <- list(
   list(
-    title = "Practice",
-    file = "Practice.html",
-    desc = "First RMD file to test",
-    tags = c("Random")
-  ),
-  list(
-    title = "Second Practice",
-    file = "practice2.html",
-    img = "",
-    desc = "Second RMD file to test",
-    tags = c("Random","Smiley")
+    title = "ELBO before it got the name",
+    file = "elbo_before.html",
+    img = default_img,
+    desc = "Relate ELBO in variational inference to autoencoder network objective",
+    tags = c("Statistics")
   )
 )
 

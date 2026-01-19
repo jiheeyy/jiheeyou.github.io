@@ -1,0 +1,50 @@
+---
+title: "ELBO before it got the name"
+author: "Jihee You"
+date: '`r Sys.Date()`'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+ELBO (Evidence Lower BOund) is a recurring concept in variational inference today. Intuitively, it is data log-likelihood minus the KL divergence. In equation form,
+
+$$ELBO = \mathbb{E}_q[\log p(x,z)] - \mathbb{E_q[\log q(z)]}$$
+where q(z) is a latent variational approximation of data x. I will explore this equation form in a later post, but first a related example would be interesting and useful.
+
+
+# F = - ELBO
+While it wasn't called ELBO yet, this idea appeared in [Autoencoders, Minimum Description Length and Helmholtz Free Energy (Hinton and Zemel, NeurIPS 1993)](https://proceedings.neurips.cc/paper/1993/file/9e3cfc48eccf81a0d57663e129aef3cb-Paper.pdf "View paper"). This paper itself is on how to train an autoencoder network: in case you are not familiar, autoencoder network is an algorithm that tosses input data vectors into a lower embedding dimension, hoping to get informative and less noisy representation of the original data. 
+
+Hinton and Zemel thought the best autoencoder network would encode (map input to embedding) based on a Boltzmann distribution (no need to know exactly--it's just a probability distribution), but computing a Boltzmann distribution is computationally expensive. As an alternative, they proposed minimizing **F, the "true expected combined cost,"** which would encourage the encoder to follow approximate Boltzmann distribution. Sounds like variational inference!
+
+Equation (4) in the paper describes "true expected combined cost":
+$$ F = \sum_i p_i E_i - H $$
+Note you can find $H = \sum_i p_i (-\log p_i)$ in equation (3). Below is what each variable signifies. 
+
+* $E_i$: Price of choosing embedding i 
+* $p_i$: Probability of choosing embedding i
+* $-\log (p_i)$: Surprise (or usefulness) from choosing embedding i. 
+
+Note the surprise term comes from Shannon entropy in information theory. Surprise of an event E is quantified as $-\log(Pr(E))$ so that for events with high probability, surprise is close to zero, and lower probability event has surprise closer to $+\inf$.
+
+This is one way to intuitively understand F: Imagine you're trying to call your friend Mia to describe (=encode) the newest gossip(=original data), but each second you spend on the phone costs Mia money. You can think of F as how mad Mia will be after the call. Doesn't it make sense to gauge her anger with expected expenditure from call ($\sum_i p_i E_i$) minus expected information gain ($\sum_i p_i (-\log p_i)$)? She will be very, very mad if you call for hours saying nothing really, but she'll be less mad if you call for hours but talk about the interesting news.
+
+Now, back to equations! The energy $E_i$ is defined as the sum of the embedding cost and reconstruction cost in section 2.1. Let x be the original data vector and z be the embedding. Embedding cost can be formulated as $-\log p(z)$ (again draws from Shannon entropy), and that means reconstruction cost is $-\log p(x|z)$. Then, energy can be expressed as$$
+\begin{aligned}
+E_i &= -\log p(z) - \log p(x|z) \\
+&= -\log p (x,z)
+\end{aligned}
+$$
+Now we can rewrite F to resemble ELBO form, showing a concept in a 1993 CS paper is closely related to a concept we still use today in variational inference.
+
+$$
+\begin{aligned}
+F &= - \sum_i p_i \log p(x,z) - H \\
+&= - \sum_i q(z) \log p(x,z) + \sum_i q(z) \log q(z) \\
+&= - (\mathbb{E}_q [\log p(x,z)] - \mathbb{E}_q [\log q(z)]) \\
+&= - ELBO
+\end{aligned}
+$$
