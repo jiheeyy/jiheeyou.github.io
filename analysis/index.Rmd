@@ -110,6 +110,13 @@ posts <- list(
     img = default_img,
     desc = "Relate ELBO in variational inference to autoencoder network objective",
     tags = c("Statistics")
+  ),
+  list(
+    title = "Bayes in action: Gamma-Poisson Model",
+    file = "gamma_poi.html",
+    img = "assets/gampois.png",
+    desc = "Poisson likelihood comes with Gamma prior and posterior, as well as NB marginal",
+    tags = c("Statistics")
   )
 )
 
