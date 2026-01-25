@@ -1,0 +1,58 @@
+---
+title: "Bayes in action: Gamma-Poisson Model"
+author: "Jihee You"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Very informally, we can write Bayes rule as the following.
+$$Posterior = \frac{Prior \cdot Likelihood}{Marginal}$$ 
+Assume 2 things: we observe x, and x comes from some distribution parameterized by $\lambda$. Now, we can be more formal and write Bayes rule like this:
+$$Pr(\lambda | x) = \frac{Pr(\lambda) \cdot Pr(x | \lambda )}{Pr(x)}$$
+
+### Poisson likelihood
+Let's assume one more thing: $x \sim Poi(s \lambda)$, where $s$ is a scaling constant (often called "exposure"). This formulation would be useful when investigating which of the two fisherman towns were more effective at catching fish this year. Our judging criteria will be $\lambda$: average rate of success, measured in fish per person. x is the total number of fish caught by each town. s would be the number of fisherman operating in that town. Modelling with $x \sim Poi(s \lambda)$ allows us to account for population size: town with 100 fisherman catching 100 fish is actually less effective per person than a town with 5 fisherman catching 10 fish. If we instead modelled $x \sim Poi(\lambda)$, we would erroneously think the town that caught 100 fish has better productivity. 
+
+### Gamma prior
+Our last assumption: let's say we fit previous years' data to a Gamma distribution and arrived at a prior belief with shape $= a$ and rate $= b$. It's a known property that conjugate prior of a Poisson likelihood is the Gamma distribution, so we're not assuming Gamma prior -- specifically, we're assuming parameters of the Gamma prior. Then, $\lambda \sim Gamma(shape = a, rate = b)$. This Gamma prior tells us that the expected value for $\lambda$ (fish/person) is $\frac{a}{b}$. The uncertainty (variance) in this belief is inversely proportional to $b^2$.
+
+### Gamma posterior
+After observing the new catch data $x$, our posterior distribution becomes $Pr(\lambda | x) = Gamma(a + x, b + s)$. If the observed rate $\frac{x}{s}$ is higher than our prior belief $\frac{a}{b}$, the posterior mean shifts up. Also, as s(the number of fisherman) gets larger, our confidence increases and posterior variance shrinks. 
+
+### NB marginal
+Also, the marginal distribution for number of fish caught would follow a negative binomial (NB) distribution: $Pr(x) = NB(n=a, p= \frac{b}{b+s})$. $Pr(x)$ is the weighted average of $Pr(x|\lambda)$ over all possible $\lambda$ (equivalent to integrating over $\lambda$). Since we are averaging many different Poissons, the resulting NB distribution is heavy-tailed and more uncertain than a single Poisson. 
+
+* Smaller n (smaller a) would make the NB distribution even more heavy-tailed, since variance of Gamma prior $\propto \frac{1}{a}$. (If a is small, we are very unsure about the true rate $\lambda$. Try visually comparing Gamma distribution with a = b= 1 and a = b = 100. The latter will be narrower). 
+* Smaller p also increases NB variance, since it means large s in $x \sim Poi(s \lambda)$. A Poisson distribution with a large mean naturally has a higher absolute variance (standard deviation $\sqrt{s\lambda}$). We are trying to predict a noisier system, so our marginal distribution must be heavy-tailed.
+
+The law of total variance reflects the above remarks on NB parameters.
+
+$$
+\begin{align}
+\underbrace{Var(x)}_{\text{Marginal Variance}} &= \underbrace{E[Var(x|\lambda)]}_{\text{Expected Poisson Variance}} + \underbrace{Var(E[x|\lambda])}_{\text{Gamma Variance}} \\ 
+&= E[s\lambda] + Var(s\lambda) \\
+&= s \cdot E[\lambda] + s^2 \cdot Var(\lambda) \\
+&= s \frac{a}{b} + s^2 \frac{a}{b^2}
+\end{align}
+$$
+
+###  Connecting the dots
+Recall this earlier equation.
+
+$$
+Pr(\lambda | x) = \frac{Pr(\lambda) \cdot Pr(x | \lambda )}{Pr(x)}
+$$
+We can be much more specific now and write the full conjugate update equation:
+$$
+Gamma(\lambda ; a + x, b + s) = \frac{Gamma(\lambda;a,b) \cdot Poi(x ; s\lambda)}{NB(x ; n=a, p= \frac{b}{b+s})}
+$$
+
+Below is a slidebar visualization of the Poisson-Gamma model.
+```{r, echo=FALSE}
+knitr::include_app("https://jyou.shinyapps.io/gamma_poi/", height = "850px")
+
+```
